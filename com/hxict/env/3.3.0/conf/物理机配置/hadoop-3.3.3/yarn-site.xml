@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<configuration>
+    <property>
+            <name>yarn.resourcemanager.ha.enabled</name>
+            <value>true</value>
+    </property>
+    <!--指定ResourceManager的cluster id-->
+    <property>
+            <name>yarn.resourcemanager.cluster-id</name>
+            <value>hayarn</value>
+    </property>
+    <!--指定ResourceManager的名字-->
+    <property>
+            <name>yarn.resourcemanager.ha.rm-ids</name>
+            <value>rm1,rm2</value>
+    </property>
+    <!--分别指定ResourceManager的地址-->
+    <property>
+            <name>yarn.resourcemanager.hostname.rm1</name>
+            <value>zhsf999</value>
+    </property>
+    <property>
+            <name>yarn.resourcemanager.hostname.rm2</name>
+            <value>zhsf888</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address.rm1</name>
+        <value>zhsf999:8088</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address.rm2</name>
+        <value>zhsf888:8088</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.https.address.rm1</name>
+        <value>zhsf999:8090</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.https.address.rm2</name>
+        <value>zhsf888:8090</value>
+    </property>
+    <!--指定Zookeeper集群的地址-->
+    <property>
+            <name>yarn.resourcemanager.zk-address</name>
+            <value>zhsf999:2181,zhsf888:2181,hadoop03:2181</value>
+    </property>
+    <property>
+        <!-- 开启Yarn恢复机制 -->
+        <name>yarn.resourcemanager.recovery.enabled</name>
+        <value>true</value>
+    </property> 
+    <property>
+        <!-- 配置执行ResourceManager恢复机制实现类 -->
+        <name>yarn.resourcemanager.store.class</name>
+            <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore</value>
+    </property>
+    <property>
+        <!-- 指定主resourcemanager的主机地址 -->
+        <name>yarn.resourcemanager.hostname</name>
+        <value>zhsf999</value>
+    </property>
+    <property>
+            <name>yarn.nodemanager.aux-services</name>
+            <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <!--开启日志聚集功能-->
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+    <property>
+        <!--配置日志保留7天-->
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>604800</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>yarn.log.server.url</name>
+        <value>http://zhsf999:19888/jobhistory/logs</value>
+    </property>
+    <!--下面的配置可以不用,配置了可以在8088UI界面从运行期日志跳转到历史日志-->
+    <property>
+        <name>yarn.nodemanager.remote-app-log-dir</name>
+        <value>hdfs://masters/tmp/logs</value>
+    </property>
+    <property>
+        <name>yarn.application.classpath</name>
+        <value>/usr/local/soft/hadoop-3.3.3/etc/hadoop,/usr/local/soft/hadoop-3.3.3/share/hadoop/common/lib/*,/usr/local/soft/hadoop-3.3.3/share/hadoop/common/*,/usr/local/soft/hadoop-3.3.3/share/hadoop/hdfs,/usr/local/soft/hadoop-3.3.3/share/hadoop/hdfs/lib/*,/usr/local/soft/hadoop-3.3.3/share/hadoop/hdfs/*,/usr/local/soft/hadoop-3.3.3/share/hadoop/mapreduce/*,/usr/local/soft/hadoop-3.3.3/share/hadoop/yarn,/usr/local/soft/hadoop-3.3.3/share/hadoop/yarn/lib/*,/usr/local/soft/hadoop-3.3.3/share/hadoop/yarn/*</value>
+    </property>
+</configuration>
